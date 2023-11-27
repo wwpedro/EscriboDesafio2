@@ -1,5 +1,7 @@
 # desafio2
 
+Feito em Flutter
+
 # Tarefas Feitas -
 Consumindo api que foi disponibilizada pelo link
 Retornando lista em home
