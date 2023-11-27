@@ -34,7 +34,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Livraria Online"),
+        title: Text(
+          "Livraria Online",
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -53,12 +55,12 @@ class _HomePageState extends State<HomePage> {
               if (!_isloading) {
                 return index == 0
                     ? SearchComponent(
-                        hintText: "nome",
+                        hintText: "Titulo do Livro",
                         onChanged: (searchtext) {
                           searchtext = searchtext.toLowerCase();
                           setState(() {
-                            _booksDisplay = _books.where((element) {
-                              var nameLowerCase = element.title.toLowerCase();
+                            _booksDisplay = _books.where((book) {
+                              var nameLowerCase = book.title.toLowerCase();
                               return nameLowerCase.contains(searchtext);
                             }).toList();
                           });

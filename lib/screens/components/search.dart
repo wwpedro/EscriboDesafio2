@@ -28,11 +28,6 @@ class _SearchComponentState extends State<SearchComponent> {
           border: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.blue,
-            ),
-          ),
         ),
       ),
     );

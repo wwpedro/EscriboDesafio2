@@ -19,7 +19,7 @@ class BookModel {
       title: json["title"] ?? "",
       author: json["author"] ?? "",
       cover_url: json["cover_url"] ?? "",
-      download_url: json["download_ur"] ?? "",
+      download_url: json["download_url"] ?? "",
     );
   }
 }

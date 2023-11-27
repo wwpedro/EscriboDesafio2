@@ -6,8 +6,9 @@ class BookDetailPage extends StatelessWidget {
   final BookModel book;
   const BookDetailPage({Key? key, required this.book});
 
-  Future<void> _launchUrl(String _url) async {
-    if (!await launch(_url)) {
+  Future<void> _launchLink(String _url) async {
+    if (await launch(_url)) {
+    } else {
       throw Exception('Could not launch $_url');
     }
   }
@@ -16,7 +17,9 @@ class BookDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detalhe Livros"),
+        title: Text(
+          "Detalhe Livros",
+        ),
         centerTitle: true,
       ),
       body: Container(
@@ -29,10 +32,10 @@ class BookDetailPage extends StatelessWidget {
         ),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 16.0,
+                height: 40,
               ),
               Center(
                 child: Image.network(
@@ -44,35 +47,67 @@ class BookDetailPage extends StatelessWidget {
               ),
               Text(
                 book.title,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 12,
+                height: 15,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  String bookUrl = book.download_url;
-                  _launchUrl(bookUrl);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.blue,
-                  textStyle: TextStyle(fontSize: 18.0),
+              Text(
+                book.author,
+                style: TextStyle(
+                  fontSize: 15.0,
                 ),
-                child: Text("Baixar"),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.star_border,
+                          size: 30.0,
+                          color: Color.fromARGB(255, 246, 208, 42),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 5),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: IconButton(
+                        onPressed: () {
+                          final bookUrl = book.download_url;
+                          _launchLink(bookUrl);
+                        },
+                        icon: const Icon(
+                          Icons.download,
+                          size: 30.0,
+                          color: Color.fromARGB(255, 0, 117, 213),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 12,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Colors.blue,
-                  textStyle: TextStyle(fontSize: 18.0),
-                ),
-                child: Text("Outro Botão"),
               ),
             ],
           ),
