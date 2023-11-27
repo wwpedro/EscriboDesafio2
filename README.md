@@ -1,6 +1,6 @@
 # desafio2
 
-Feito em Flutter
+Feito com Flutter
 
 # Tarefas Feitas -
 Consumindo api que foi disponibilizada pelo link
